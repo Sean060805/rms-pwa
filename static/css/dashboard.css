@@ -1,0 +1,365 @@
+
+/* ========= GLOBAL RESET ========= */
+/* Reset lahat para pantay styles across browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Background ng buong page */
+body {
+  background: #fdfcf6; /* dirty white para lumabas yung sidebar */
+  color: #222;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   SIDEBAR (Parang navigation bar sa gilid)
+===================================================== */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(135deg, #F9D423, #c57d18); /* yellow gradient */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 16px;
+  position: fixed;
+  inset: 0 auto 0 0; /* nakadikit sa left side */
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== Logo part sa taas ====== */
+.logo-box {
+  text-align: center;
+}
+
+.logo-box img {
+  width: 55px;
+  margin-bottom: 8px;
+}
+
+.logo-box h2 {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* ====== Navigation links ====== */
+.nav-links {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+/* Pag hover o active link */
+.nav-links a.active,
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ====== Logout area sa baba ====== */
+.logout {
+  text-align: center;
+}
+
+.logout .user {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.logout-btn {
+  display: inline-block;
+  background: #fff8d6;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #fff4ad;
+}
+
+/* =====================================================
+   MAIN CONTENT AREA (yung dashboard mismo)
+===================================================== */
+.main {
+  flex: 1;
+  margin-left: 240px; /* para di matakpan ng sidebar */
+  padding: 30px 40px;
+}
+
+/* ====== Header (title + add button) ====== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ====== Button styles ====== */
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #F9D423, #cf841a);
+  color: #111;
+}
+
+.btn.primary:hover {
+  filter: brightness(1.05);
+}
+
+/* =====================================================
+   TABLE AREA — where records are displayed
+===================================================== */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Table design */
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.records-table th {
+  background: #fff9e0; /* soft yellow header */
+  padding: 12px 10px;
+  font-size: 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.records-table td {
+  padding: 10px;
+  border-bottom: 1px solid #f3f3f3;
+  font-size: 14px;
+}
+
+.records-table tr:hover {
+  background: #fffaf0;
+}
+
+/* Actions buttons (edit, delete, view) */
+.actions {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.action {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: #fff6cc;
+  color: #444;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action:hover {
+  background: #ffe98d;
+}
+
+/* same color for all icons for simplicity */
+.action i {
+  color: #2b2e30;
+}
+
+/* =====================================================
+   MODALS (Add, Edit, View pop-ups)
+===================================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none; /* nakatago by default */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2000; /* nasa ibabaw ng lahat */
+}
+
+/* Kapag naka-open ang modal */
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+/* Design ng modal card mismo */
+.modal-card {
+  background: #fff;
+  width: 420px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.25s ease;
+}
+
+/* Animation effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-card h3 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Labels + Inputs inside modal */
+.modal-card label {
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 10px;
+  display: block;
+}
+
+.modal-card input,
+.modal-card select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-color: #afafaf;
+  outline: none;
+}
+
+/* Buttons sa ilalim ng modal */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* =====================================================
+   TOAST POPUP (Notification alert sa taas)
+===================================================== */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: #fff7d1;
+  color: #222;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  border-left: 5px solid #f5b000;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 3000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.hidden {
+  display: none;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN — para sa mobile view
+===================================================== */
+@media (max-width: 768px) {
+  /* Sidebar magiging top nav style */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+  }
+
+  .logo-box h2 {
+    display: none;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .logout {
+    display: none; /* hide logout sa mobile para di crowded */
+  }
+
+  .main {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .modal-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .records-table {
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+  }
+}

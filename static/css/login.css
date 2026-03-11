@@ -1,0 +1,190 @@
+
+/* Reset lahat ng margins at paddings para pantay */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic style ng buong page */
+body, html {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* =====================================================
+   MAIN WRAPPER — hati sa dalawang side (left & right)
+===================================================== */
+.wrap {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =====================================================
+   LEFT SIDE — Logo at System Title
+   (dito yung design part, parang banner)
+===================================================== */
+.left {
+  flex: 1;
+  background: linear-gradient(135deg, #F9D423, #ac6d15); /* Yellow gradient */
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Logo ng system */
+.left .logo {
+  width: 90px;
+  margin-bottom: 18px;
+}
+
+/* Title text (Record Management System) */
+.left h1 {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Optional tag or quote text */
+.left .tag {
+  margin-top: 10px;
+  opacity: 0.95;
+}
+
+/* =====================================================
+   RIGHT SIDE — Login Form Area
+===================================================== */
+.right {
+  flex: 1;
+  background: #fff; /* Malinis na white background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+
+/* Box container ng login form */
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 10px;
+  padding: 26px;
+  background: linear-gradient(180deg, #ffffff, #fffafa);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Title ng login form */
+.login-box h2 {
+  margin-bottom: 12px;
+}
+
+/* Labels ng inputs */
+.login-box label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #333;
+}
+
+/* Input fields */
+.login-box input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  border-color: #afafaf;
+  outline: none;
+}
+
+/* =====================================================
+   BUTTON STYLES
+===================================================== */
+.btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Primary login button */
+.btn.primary {
+  background: linear-gradient(135deg, #F9D423, #ac6d15);
+  color: #111;
+  font-weight: 700;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.btn.primary:hover {
+  filter: brightness(1.05);
+}
+
+/* =====================================================
+   FLASH MESSAGES — kapag may mali o alert
+===================================================== */
+.flashes {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.flashes li {
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  color: #111;
+  background: #fff2cc; /* light yellow */
+  border: 1px solid #f4d58a;
+  font-size: 13px;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN — para mag-adjust sa phone
+===================================================== */
+@media (max-width: 800px) {
+  /* Pag maliit screen, magiging top-bottom layout */
+  .wrap {
+    flex-direction: column;
+  }
+
+  .left, .right {
+    flex: none;
+    width: 100%;
+    min-height: 40vh;
+  }
+
+  .left {
+    padding: 30px;
+  }
+
+  .login-box {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .records-table {
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+  }
+}

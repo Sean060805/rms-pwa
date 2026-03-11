@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RMS — Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1f2937">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/icon-192.png') }}">
+  <body>
+  <div class="wrap">
+    <!-- left side: logo at title -->
+    <div class="left">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+      <h1>Record<br>Management<br>System</h1>
+    </div>
+
+    <!-- right side: login form -->
+    <div class="right">
+      <form method="POST" action="{{ url_for('login') }}" class="login-box">
+        <h2>Login</h2>
+
+        <!-- username input -->
+        <label for="username">Username</label>
+        <input type="text" name="username" required>
+
+        <!-- password input -->
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+
+        <!-- submit button -->
+        <button type="submit" class="btn primary">Login</button>
+
+        <!-- kung may error message -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </form>
+    </div>
+  </div>
+<button id="installBtn" hidden>Install App</button>
+<script src="{{ url_for('static', filename='js/pwa.js') }}"></script>
+</body>
+</html>
